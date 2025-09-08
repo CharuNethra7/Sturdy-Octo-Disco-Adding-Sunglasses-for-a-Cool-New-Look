@@ -26,3 +26,90 @@ Welcome to Sturdy Octo Disco, a fun and creative project designed to overlay sun
 - Practicing computer vision workflows.
 
 Feel free to fork, contribute, or customize this project for your creative needs!
+## PROGRAM:
+Developed by: CHARU NETHRA R
+Register Number: 212223230035
+
+```
+# Import libraries and Load the Face Image
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+faceImage = cv2.imread('643.JPG')
+plt.imshow(faceImage[:,:,::-1]);plt.title("Face")
+```
+
+<img width="547" height="584" alt="image" src="https://github.com/user-attachments/assets/43e0029e-471c-422f-b0ce-c8ff0a73f79c" />
+
+
+
+```
+# Resize the image to fit over the eye region
+glassPNG = cv2.resize(glassPNG,(190,70))
+print("image Dimension ={}".format(glassPNG.shape))
+```
+
+![image](https://github.com/user-attachments/assets/5d8fe46d-b534-445e-8ebe-dd8275844c12)
+
+
+```
+# Resize the image to fit over the eye region
+glassPNG = cv2.resize(glassPNG,(190,70))
+print("image Dimension ={}".format(glassPNG.shape))
+
+# Separate the Color and alpha channels
+glassBGR = glassPNG[:,:,0:3]
+glassMask1 = glassPNG[:,:,3]
+
+# Display the images for clarity
+plt.figure(figsize=[15,15])
+plt.subplot(121);plt.imshow(glassBGR[:,:,::-1]);plt.title('Sunglass Color channels');
+plt.subplot(122);plt.imshow(glassMask1,cmap='gray');plt.title('Sunglass Alpha channel');
+```
+<img width="1387" height="263" alt="image" src="https://github.com/user-attachments/assets/105fdeaf-8bba-46bd-bc6d-3befc83a5a64" />
+
+
+
+
+```
+faceWithGlassesNaive = faceImage.copy()
+# Replace the eye region with the sunglass image
+faceWithGlassesNaive[150:220, 120:310]=glassBGR
+
+plt.imshow(faceWithGlassesNaive[...,::-1])
+```
+
+<img width="491" height="554" alt="image" src="https://github.com/user-attachments/assets/1373414e-a2fc-4b92-9648-6cc08364f657" />
+
+
+
+```
+glassMask = cv2.merge((glassMask1,glassMask1,glassMask1))
+glassMask = np.uint8(glassMask/255)
+faceWithGlassesArithmetic = faceImage.copy()
+eyeROI= faceWithGlassesArithmetic[150:220, 120:310]
+maskedEye = cv2.multiply(eyeROI,(1-glassMask ))
+maskedGlass = cv2.multiply(glassBGR,glassMask)
+eyeRoiFinal = cv2.add(maskedEye, maskedGlass)
+plt.figure(figsize=[20,20])
+plt.subplot(131);plt.imshow(maskedEye[...,::-1]);plt.title("Masked Eye Region")
+plt.subplot(132);plt.imshow(maskedGlass[...,::-1]);plt.title("Masked Sunglass Region")
+plt.subplot(133);plt.imshow(eyeRoiFinal[...,::-1]);plt.title("Augmented Eye and Sunglass")
+```
+
+<img width="1385" height="223" alt="image" src="https://github.com/user-attachments/assets/0fb43bcd-1618-456c-a56d-8cad2213d9aa" />
+
+
+
+```
+faceWithGlassesArithmetic[150:220, 120:310]=eyeRoiFinal
+plt.figure(figsize=[20,20]);
+plt.subplot(121);plt.imshow(faceImage[:,:,::-1]); plt.title("Original Image");
+plt.subplot(122);plt.imshow(faceWithGlassesArithmetic[:,:,::-1]);plt.title("With Sunglasses");
+```
+
+![Uploading image.png…]()
+
+
+ 
+
