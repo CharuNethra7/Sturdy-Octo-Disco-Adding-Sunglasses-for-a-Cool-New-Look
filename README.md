@@ -49,7 +49,8 @@ glassPNG = cv2.resize(glassPNG,(190,70))
 print("image Dimension ={}".format(glassPNG.shape))
 ```
 
-![image](https://github.com/user-attachments/assets/5d8fe46d-b534-445e-8ebe-dd8275844c12)
+<img width="644" height="322" alt="image" src="https://github.com/user-attachments/assets/9f544e1f-08fd-4cb0-aa8d-41262e61d92d" />
+
 
 
 ```
@@ -108,7 +109,8 @@ plt.subplot(121);plt.imshow(faceImage[:,:,::-1]); plt.title("Original Image");
 plt.subplot(122);plt.imshow(faceWithGlassesArithmetic[:,:,::-1]);plt.title("With Sunglasses");
 ```
 
-![Uploading image.png…]()
+<img width="1203" height="696" alt="image" src="https://github.com/user-attachments/assets/46eb61d0-179a-432a-a2ee-e24d51df0fe4" />
+
 
 
  
