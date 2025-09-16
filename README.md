@@ -1,4 +1,6 @@
 # Sturdy-Octo-Disco-Adding-Sunglasses-for-a-Cool-New-Look
+# DEVELOPED BY: CHARU NETHRA R
+# REGISTER NUMBER: 212223230035
 
 Sturdy Octo Disco is a fun project that adds sunglasses to photos using image processing.
 
@@ -27,8 +29,7 @@ Welcome to Sturdy Octo Disco, a fun and creative project designed to overlay sun
 
 Feel free to fork, contribute, or customize this project for your creative needs!
 ## PROGRAM:
-Developed by: CHARU NETHRA R
-Register Number: 212223230035
+
 
 ```
 # Import libraries and Load the Face Image
